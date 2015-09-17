@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <style>
 .form-signin
 {
@@ -88,10 +94,10 @@
             <div class="account-wall">
                 <img class="profile-img" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAANwAAAAJGRlMGE5OGUyLWI4NzUtNDc1Ni05NTgxLTRjZDNlZmFhNmM2OQ.jpg?sz=120"
                     alt="">
-                <form class="form-signin" action="../signin" >
-                <input type="text" name = "username" class="form-control" placeholder="Email" required autofocus>
-                <input type="password" name = "pwd" class="form-control" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                <form class="form-signin" action="./H1.html" >
+                <input type="text" id = "username" class="form-control" placeholder="Email" required autofocus>
+                <input type="password" id = "pwd" class="form-control" placeholder="Password" required>
+                <button class="btn btn-lg btn-primary btn-block" onclick="login()">
                     Sign in</button>
                 <label class="checkbox pull-left">
                     <input type="checkbox" value="remember-me">
@@ -100,7 +106,7 @@
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
                 </form>
             </div>
-            <a href="./signup.html" class="text-center new-account">Create an account </a>
+            <a href="./signup.html" class="text-center new-account" onclick="./signup.html">Create an account </a>
         </div>
     </div>
 </div>
@@ -109,3 +115,10 @@
     <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
+<script>
+function login() {
+    var userName = document.getElementById("username").value;
+    localStorage.setItem("userName", userName);
+    location.href = "./H1.html";
+}
+</script>
