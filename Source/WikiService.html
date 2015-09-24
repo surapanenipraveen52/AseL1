@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="" data-ng-app="GoogleDirection">
+<head>
+  <meta t="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MashUp</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+    <style>
+             textarea    { font-size:16px;
+             display: block;
+             margin-left: auto;
+    margin-right: auto;}
+
+    </style>
+</head>
+
+<body>
+
+<div class="wrapp" ng-controller="mashup">
+         <div class="row">
+                                  <br>
+
+             <div class="col-sm-6 col-md-4 col-md-offset-1">
+                <input type="text"  class="form-control"  placeholder="Enter Key term" ng-model="startlocation" id="startlocation"/>
+                              <div class="col-sm-6 col-md-5 col-md-offset-2">
+                                  <br>
+                <button id="btn" class="btn btn-lg btn-primary btn-block" ng-click="calcRoute()">
+                    Get Info
+                </button>
+                 </div>
+                 <br/></br>
+             </div>
+
+                    <br/></br>
+                    <br/></br>
+
+                    <br/></br>
+                    <br/></br>
+   
+    <textarea rows="17" cols="150" id = 'loc2'>
+</textarea>
+
+            </div>
+                                      <br>
+
+        </div>
+    </body>
+</html>
+
+
+<script>
+angular.module('GoogleDirection', [])
+.controller('mashup', function ($scope, $http) {
+  
+    $scope.calcRoute = function () {
+                    var start = document.getElementById('startlocation').value;
+        var url1 = "http://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&titles="+start+"&format=json&callback=?";
+        $.getJSON(url1, function(data) {
+        	 var op = JSON.stringify(data); 
+        	 var ind = op.indexOf("intl");
+        	 var op1 = op.substring(ind);
+        	 var ind2 = op1.indexOf("'''");
+            document.getElementById('loc2').innerHTML = op1.substring(ind2);
+
+    	});
+    };
+});
+
+
+
+</script>
